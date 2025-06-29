@@ -253,21 +253,276 @@
 
       .tab-content {
         display: none;
-        padding: 20px 0;
+        padding: 20px;
       }
 
       .tab-content.active {
         display: block;
-        animation: fadeIn 0.3s;
       }
 
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
+      /* 分析报告样式 */
+      .analysis-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .stats-section, .search-section, .chatroom-section, .daily-summary-section, .golden-quotes-section, .export-section, .files-section {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+
+      .stats-section h3, .search-section h3, .chatroom-section h3, .daily-summary-section h3, .golden-quotes-section h3, .export-section h3, .files-section h3 {
+        margin: 0 0 15px 0;
+        color: #333;
+        font-size: 18px;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+      }
+
+      .stat-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+      }
+
+      .stat-card h3 {
+        margin: 0 0 10px 0;
+        font-size: 24px;
+      }
+
+      .stat-card p {
+        margin: 0;
+        opacity: 0.9;
+      }
+
+      /* 搜索功能样式 */
+      .search-controls, .chatroom-controls, .daily-controls, .quotes-controls {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+      }
+
+      .search-input, .search-select, .chatroom-select, .chatroom-days, .daily-date, .daily-chatroom, .quotes-date, .quotes-chatroom {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+
+      .search-input {
+        flex: 1;
+        min-width: 200px;
+      }
+
+      .search-btn, .chatroom-btn, .daily-btn, .quotes-btn {
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .search-btn:hover, .chatroom-btn:hover, .daily-btn:hover, .quotes-btn:hover {
+        background: var(--primary-dark);
+      }
+
+      /* 结果显示样式 */
+      .search-results, .chatroom-results, .daily-summary-results, .golden-quotes-results {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 15px;
+        max-height: 400px;
+        overflow-y: auto;
+      }
+
+      .message-group {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 15px;
+      }
+
+      .message-group h4 {
+        color: var(--primary-color);
+        margin: 0 0 10px 0;
+        font-size: 16px;
+      }
+
+      .message-item {
+        background: white;
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 5px;
+        border-left: 3px solid var(--primary-color);
+      }
+
+      .message-content {
+        margin-bottom: 5px;
+        line-height: 1.4;
+      }
+
+      .message-meta {
+        font-size: 12px;
+        color: #666;
+      }
+
+      /* 每日汇总样式 */
+      .summary-item {
+        background: white;
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 8px;
+        border: 1px solid #eee;
+      }
+
+      .summary-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .summary-title {
+        font-weight: bold;
+        color: var(--primary-color);
+      }
+
+      .activity-level {
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      .keywords-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 10px;
+      }
+
+      .keyword-tag {
+        background: var(--primary-color);
+        color: white;
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-size: 12px;
+      }
+
+      /* 金句样式 */
+      .quote-item {
+        background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 8px;
+        border-left: 4px solid #e17055;
+      }
+
+      .quote-content {
+        font-style: italic;
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 5px;
+      }
+
+      .quote-meta {
+        font-size: 12px;
+        color: #666;
+      }
+
+      /* 导出按钮样式 */
+      .export-buttons {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .export-btn {
+        background: var(--success-color);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .export-btn:hover {
+        background: var(--success-dark);
+      }
+
+      /* 文件列表样式 */
+      .files-list {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 15px;
+        max-height: 300px;
+        overflow-y: auto;
+      }
+
+      .file-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background: white;
+        margin: 5px 0;
+        border-radius: 5px;
+        border: 1px solid #eee;
+      }
+
+      .file-name {
+        font-weight: bold;
+        color: var(--primary-color);
+      }
+
+      .file-download {
+        background: var(--success-color);
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 12px;
+      }
+
+      .file-download:hover {
+        background: var(--success-dark);
+      }
+
+      /* 加载状态 */
+      .loading {
+        text-align: center;
+        padding: 20px;
+        color: #666;
+      }
+
+      .loading::after {
+        content: '';
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #ddd;
+        border-top: 2px solid var(--primary-color);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-left: 10px;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
       }
 
       .button-group {
@@ -346,6 +601,7 @@
             <div class="tab" data-tab="chatroom">群聊</div>
             <div class="tab" data-tab="contact">联系人</div>
             <div class="tab" data-tab="chatlog">聊天记录</div>
+            <div class="tab" data-tab="analysis">📊 分析报告</div>
           </div>
 
           <!-- 会话查询表单 -->
@@ -501,6 +757,94 @@
                 <option value="json">JSON</option>
                 <option value="csv">CSV</option>
               </select>
+            </div>
+          </div>
+
+          <!-- 分析报告Tab内容 -->
+          <div id="analysis-tab" class="tab-content" style="display: none;">
+            <div class="analysis-container">
+                <!-- 统计信息 -->
+                <div class="stats-section">
+                    <h3>📊 数据统计</h3>
+                    <div id="stats-content" class="stats-grid"></div>
+                </div>
+
+                <!-- 搜索功能 -->
+                <div class="search-section">
+                    <h3>🔍 关键词搜索</h3>
+                    <div class="search-controls">
+                        <input type="text" id="search-keyword" placeholder="输入搜索关键词..." class="search-input">
+                        <select id="search-days" class="search-select">
+                            <option value="1">最近1天</option>
+                            <option value="3">最近3天</option>
+                            <option value="7" selected>最近7天</option>
+                            <option value="14">最近14天</option>
+                            <option value="30">最近30天</option>
+                        </select>
+                        <button onclick="searchMessages()" class="search-btn">搜索</button>
+                    </div>
+                    <div id="search-results" class="search-results"></div>
+                </div>
+
+                <!-- 群聊选择 -->
+                <div class="chatroom-section">
+                    <h3>💬 群聊历史</h3>
+                    <div class="chatroom-controls">
+                        <select id="chatroom-selector" class="chatroom-select">
+                            <option value="">选择群聊...</option>
+                        </select>
+                        <select id="chatroom-days" class="chatroom-days">
+                            <option value="7">最近7天</option>
+                            <option value="14">最近14天</option>
+                            <option value="30" selected>最近30天</option>
+                            <option value="60">最近60天</option>
+                        </select>
+                        <button onclick="loadChatroomHistory()" class="chatroom-btn">查看历史</button>
+                    </div>
+                    <div id="chatroom-results" class="chatroom-results"></div>
+                </div>
+
+                <!-- 每日汇总 -->
+                <div class="daily-summary-section">
+                    <h3>📅 每日汇总</h3>
+                    <div class="daily-controls">
+                        <input type="date" id="daily-date" class="daily-date">
+                        <select id="daily-chatroom" class="daily-chatroom">
+                            <option value="">所有群聊</option>
+                        </select>
+                        <button onclick="loadDailySummary()" class="daily-btn">生成汇总</button>
+                    </div>
+                    <div id="daily-summary-results" class="daily-summary-results"></div>
+                </div>
+
+                <!-- 金句提取 -->
+                <div class="golden-quotes-section">
+                    <h3>🌟 每日金句</h3>
+                    <div class="quotes-controls">
+                        <input type="date" id="quotes-date" class="quotes-date">
+                        <select id="quotes-chatroom" class="quotes-chatroom">
+                            <option value="">所有群聊</option>
+                        </select>
+                        <button onclick="loadGoldenQuotes()" class="quotes-btn">提取金句</button>
+                    </div>
+                    <div id="golden-quotes-results" class="golden-quotes-results"></div>
+                </div>
+
+                <!-- 数据导出 -->
+                <div class="export-section">
+                    <h3>📤 数据导出</h3>
+                    <div class="export-buttons">
+                        <button onclick="exportData('csv')" class="export-btn">导出CSV</button>
+                        <button onclick="exportData('json')" class="export-btn">导出JSON</button>
+                        <button onclick="exportData('txt')" class="export-btn">导出TXT</button>
+                    </div>
+                </div>
+
+                <!-- 文件下载 -->
+                <div class="files-section">
+                    <h3>📁 文件下载</h3>
+                    <div id="files-content" class="files-list"></div>
+                </div>
             </div>
           </div>
 
@@ -752,6 +1096,399 @@
             console.error("复制失败:", err);
           });
       }
+
+      // 分析报告相关函数
+      async function loadStats() {
+        try {
+          const response = await fetch('/api/v1/analysis/stats');
+          const data = await response.json();
+          
+          const statsContent = document.getElementById('stats-content');
+          statsContent.innerHTML = `
+            <div class="stat-card">
+              <h3>${data.total_sessions || 0}</h3>
+              <p>总会话数</p>
+            </div>
+            <div class="stat-card">
+              <h3>${data.total_contacts || 0}</h3>
+              <p>总联系人数</p>
+            </div>
+            <div class="stat-card">
+              <h3>${data.total_chatrooms || 0}</h3>
+              <p>总群聊数</p>
+            </div>
+            <div class="stat-card">
+              <h3>${data.recent_messages || 0}</h3>
+              <p>最近7天消息</p>
+            </div>
+          `;
+        } catch (error) {
+          console.error('加载统计信息失败:', error);
+        }
+      }
+
+      // 搜索消息
+      async function searchMessages() {
+        const keyword = document.getElementById('search-keyword').value.trim();
+        const days = document.getElementById('search-days').value;
+        
+        if (!keyword) {
+          alert('请输入搜索关键词');
+          return;
+        }
+        
+        const resultsDiv = document.getElementById('search-results');
+        resultsDiv.innerHTML = '<div class="loading">搜索中...</div>';
+        
+        try {
+          const response = await fetch(`/api/v1/analysis/search?keyword=${encodeURIComponent(keyword)}&days=${days}`);
+          const data = await response.json();
+          
+          if (data.error) {
+            resultsDiv.innerHTML = `<div style="color: red;">错误: ${data.error}</div>`;
+            return;
+          }
+          
+          let html = `
+            <div style="margin-bottom: 15px; padding: 10px; background: #e8f5e8; border-radius: 5px;">
+              <strong>搜索关键词:</strong> ${data.keyword} | 
+              <strong>时间范围:</strong> 最近${data.search_days}天 | 
+              <strong>找到消息:</strong> ${data.total_messages}条
+            </div>
+          `;
+          
+          if (data.total_messages === 0) {
+            html += '<div style="text-align: center; color: #666; padding: 20px;">未找到相关消息</div>';
+          } else {
+            for (const [groupName, messages] of Object.entries(data.grouped_results)) {
+              html += `
+                <div class="message-group">
+                  <h4>${groupName} (${messages.length}条)</h4>
+                `;
+              
+              messages.forEach(msg => {
+                const time = new Date(msg.time * 1000).toLocaleString();
+                html += `
+                  <div class="message-item">
+                    <div class="message-content">${msg.content}</div>
+                    <div class="message-meta">
+                      <strong>发送者:</strong> ${msg.sender} | 
+                      <strong>时间:</strong> ${time} | 
+                      <strong>类型:</strong> ${msg.type}
+                    </div>
+                  </div>
+                `;
+              });
+              
+              html += '</div>';
+            }
+          }
+          
+          resultsDiv.innerHTML = html;
+        } catch (error) {
+          console.error('搜索失败:', error);
+          resultsDiv.innerHTML = '<div style="color: red;">搜索失败，请重试</div>';
+        }
+      }
+
+      // 加载群聊历史
+      async function loadChatroomHistory() {
+        const talker = document.getElementById('chatroom-selector').value;
+        const days = document.getElementById('chatroom-days').value;
+        
+        if (!talker) {
+          alert('请选择群聊');
+          return;
+        }
+        
+        const resultsDiv = document.getElementById('chatroom-results');
+        resultsDiv.innerHTML = '<div class="loading">加载中...</div>';
+        
+        try {
+          const response = await fetch(`/api/v1/analysis/chatroom?talker=${encodeURIComponent(talker)}&days=${days}`);
+          const data = await response.json();
+          
+          if (data.error) {
+            resultsDiv.innerHTML = `<div style="color: red;">错误: ${data.error}</div>`;
+            return;
+          }
+          
+          let html = `
+            <div style="margin-bottom: 15px; padding: 10px; background: #e8f5e8; border-radius: 5px;">
+              <strong>群聊:</strong> ${data.talker} | 
+              <strong>时间范围:</strong> ${data.stats.start_date} 至 ${data.stats.end_date} | 
+              <strong>总消息:</strong> ${data.stats.total_messages}条 | 
+              <strong>活跃天数:</strong> ${data.stats.total_days}天
+            </div>
+          `;
+          
+          if (data.stats.total_messages === 0) {
+            html += '<div style="text-align: center; color: #666; padding: 20px;">该时间段内无消息记录</div>';
+          } else {
+            const sortedDates = Object.keys(data.daily_messages).sort().reverse();
+            
+            sortedDates.forEach(date => {
+              const messages = data.daily_messages[date];
+              html += `
+                <div class="message-group">
+                  <h4>${date} (${messages.length}条消息)</h4>
+                `;
+              
+              messages.forEach(msg => {
+                const time = new Date(msg.time * 1000).toLocaleString();
+                html += `
+                  <div class="message-item">
+                    <div class="message-content">${msg.content}</div>
+                    <div class="message-meta">
+                      <strong>发送者:</strong> ${msg.sender} | 
+                      <strong>时间:</strong> ${time} | 
+                      <strong>小时:</strong> ${msg.hour}点
+                    </div>
+                  </div>
+                `;
+              });
+              
+              html += '</div>';
+            });
+          }
+          
+          resultsDiv.innerHTML = html;
+        } catch (error) {
+          console.error('加载群聊历史失败:', error);
+          resultsDiv.innerHTML = '<div style="color: red;">加载失败，请重试</div>';
+        }
+      }
+
+      // 加载每日汇总
+      async function loadDailySummary() {
+        const date = document.getElementById('daily-date').value;
+        const chatroom = document.getElementById('daily-chatroom').value;
+        
+        if (!date) {
+          alert('请选择日期');
+          return;
+        }
+        
+        const resultsDiv = document.getElementById('daily-summary-results');
+        resultsDiv.innerHTML = '<div class="loading">生成汇总中...</div>';
+        
+        try {
+          let url = `/api/v1/analysis/daily-summary?date=${date}`;
+          if (chatroom) {
+            url += `&talker=${encodeURIComponent(chatroom)}`;
+          }
+          
+          const response = await fetch(url);
+          const data = await response.json();
+          
+          if (data.error) {
+            resultsDiv.innerHTML = `<div style="color: red;">错误: ${data.error}</div>`;
+            return;
+          }
+          
+          let html = `
+            <div style="margin-bottom: 15px; padding: 10px; background: #e8f5e8; border-radius: 5px;">
+              <strong>日期:</strong> ${data.date} | 
+              <strong>群聊数量:</strong> ${data.total_groups}个 | 
+              <strong>总消息:</strong> ${data.total_messages}条
+            </div>
+          `;
+          
+          if (data.total_groups === 0) {
+            html += '<div style="text-align: center; color: #666; padding: 20px;">该日期无消息记录</div>';
+          } else {
+            for (const [groupName, summary] of Object.entries(data.summaries)) {
+              html += `
+                <div class="summary-item">
+                  <div class="summary-header">
+                    <span class="summary-title">${groupName}</span>
+                    <span class="activity-level">${summary.activity_level}</span>
+                  </div>
+                  <div><strong>消息数量:</strong> ${summary.message_count}条</div>
+                  <div><strong>主题:</strong> ${summary.topics.join(', ')}</div>
+                  <div class="keywords-list">
+                    <strong>关键词:</strong>
+                    ${summary.keywords.map(keyword => `<span class="keyword-tag">${keyword}</span>`).join('')}
+                  </div>
+                </div>
+              `;
+            }
+          }
+          
+          resultsDiv.innerHTML = html;
+        } catch (error) {
+          console.error('生成每日汇总失败:', error);
+          resultsDiv.innerHTML = '<div style="color: red;">生成失败，请重试</div>';
+        }
+      }
+
+      // 加载金句
+      async function loadGoldenQuotes() {
+        const date = document.getElementById('quotes-date').value;
+        const chatroom = document.getElementById('quotes-chatroom').value;
+        
+        if (!date) {
+          alert('请选择日期');
+          return;
+        }
+        
+        const resultsDiv = document.getElementById('golden-quotes-results');
+        resultsDiv.innerHTML = '<div class="loading">提取金句中...</div>';
+        
+        try {
+          let url = `/api/v1/analysis/golden-quotes?date=${date}`;
+          if (chatroom) {
+            url += `&talker=${encodeURIComponent(chatroom)}`;
+          }
+          
+          const response = await fetch(url);
+          const data = await response.json();
+          
+          if (data.error) {
+            resultsDiv.innerHTML = `<div style="color: red;">错误: ${data.error}</div>`;
+            return;
+          }
+          
+          let html = `
+            <div style="margin-bottom: 15px; padding: 10px; background: #e8f5e8; border-radius: 5px;">
+              <strong>日期:</strong> ${data.date} | 
+              <strong>提取金句:</strong> ${data.total_quotes}条
+              ${data.talker ? ` | <strong>群聊:</strong> ${data.talker}` : ''}
+            </div>
+          `;
+          
+          if (data.total_quotes === 0) {
+            html += '<div style="text-align: center; color: #666; padding: 20px;">该日期未找到金句</div>';
+          } else {
+            data.quotes.forEach((quote, index) => {
+              html += `
+                <div class="quote-item">
+                  <div class="quote-content">"${quote.content}"</div>
+                  <div class="quote-meta">
+                    <strong>序号:</strong> ${quote.index} | 
+                    <strong>长度:</strong> ${quote.length}字符
+                  </div>
+                </div>
+              `;
+            });
+          }
+          
+          resultsDiv.innerHTML = html;
+        } catch (error) {
+          console.error('提取金句失败:', error);
+          resultsDiv.innerHTML = '<div style="color: red;">提取失败，请重试</div>';
+        }
+      }
+
+      // 导出数据
+      async function exportData(format) {
+        try {
+          const response = await fetch(`/api/v1/analysis/export?format=${format}`);
+          const blob = await response.blob();
+          
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `wechat_analysis_${new Date().toISOString().split('T')[0]}.${format}`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url);
+        } catch (error) {
+          console.error('导出失败:', error);
+          alert('导出失败，请重试');
+        }
+      }
+
+      // 加载文件列表
+      async function loadFiles() {
+        try {
+          const response = await fetch('/api/v1/analysis/files');
+          const data = await response.json();
+          
+          const filesContent = document.getElementById('files-content');
+          if (data.files && data.files.length > 0) {
+            let html = '';
+            data.files.forEach(file => {
+              html += `
+                <div class="file-item">
+                  <span class="file-name">${file.name}</span>
+                  <button class="file-download" onclick="downloadFile('${file.name}')">下载</button>
+                </div>
+              `;
+            });
+            filesContent.innerHTML = html;
+          } else {
+            filesContent.innerHTML = '<div style="text-align: center; color: #666; padding: 20px;">暂无文件</div>';
+          }
+        } catch (error) {
+          console.error('加载文件列表失败:', error);
+        }
+      }
+
+      // 下载文件
+      async function downloadFile(filename) {
+        try {
+          const response = await fetch(`/api/v1/analysis/download?file=${encodeURIComponent(filename)}`);
+          const blob = await response.blob();
+          
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url);
+        } catch (error) {
+          console.error('下载失败:', error);
+          alert('下载失败，请重试');
+        }
+      }
+
+      // 初始化群聊选择器
+      async function initChatroomSelectors() {
+        try {
+          const response = await fetch('/api/v1/chatroom?format=text');
+          const data = await response.json();
+          
+          const chatroomSelector = document.getElementById('chatroom-selector');
+          const dailyChatroom = document.getElementById('daily-chatroom');
+          const quotesChatroom = document.getElementById('quotes-chatroom');
+          
+          if (data.chatrooms && data.chatrooms.length > 0) {
+            data.chatrooms.forEach(chatroom => {
+              const option = document.createElement('option');
+              option.value = chatroom.talker;
+              option.textContent = chatroom.name || chatroom.talker;
+              
+              chatroomSelector.appendChild(option.cloneNode(true));
+              dailyChatroom.appendChild(option.cloneNode(true));
+              quotesChatroom.appendChild(option.cloneNode(true));
+            });
+          }
+        } catch (error) {
+          console.error('初始化群聊选择器失败:', error);
+        }
+      }
+
+      // 设置默认日期
+      function setDefaultDates() {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('daily-date').value = today;
+        document.getElementById('quotes-date').value = today;
+      }
+
+      // 页面加载完成后初始化
+      document.addEventListener('DOMContentLoaded', function() {
+        // 初始化分析报告Tab
+        if (document.getElementById('analysis-tab').style.display !== 'none') {
+          loadStats();
+          loadFiles();
+          initChatroomSelectors();
+          setDefaultDates();
+        }
+      });
     </script>
   </body>
 </html>
